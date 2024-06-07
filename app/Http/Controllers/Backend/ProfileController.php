@@ -41,4 +41,19 @@ class ProfileController extends Controller
 
         return back();
     }
+
+    /** Update password */
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => ['required', 'current_password'],
+            'password' => ['required', 'confirmed', 'min:8']
+        ]);
+
+        $request->user()->update([
+            'password' => bcrypt($request->password)
+        ]);
+
+        return back();
+    }
 }

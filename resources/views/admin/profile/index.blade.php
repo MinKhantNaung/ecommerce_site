@@ -48,6 +48,51 @@
                         </form>
                     </div>
                 </div>
+
+                <div class="col-12 col-md-12 col-lg-7">
+                    <div class="card">
+
+                        @if ($errors->any())
+                            @foreach ($errors->all() as $error)
+                                <div class="alert alert-danger">
+                                    {{ $error }}
+                                </div>
+                            @endforeach
+                        @endif
+
+                        <form method="post" action="{{ route('admin.password.update') }}" class="needs-validation"
+                            novalidate="" enctype="multipart/form-data">
+
+                            @csrf
+                            <div class="card-header">
+                                <h4>Update Password</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="form-group col-12">
+                                        <label>Current Password</label>
+                                        <input type="password" name="current_password" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-12">
+                                        <label>New Password</label>
+                                        <input type="password" name="password" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-12">
+                                        <label>Confirm Password</label>
+                                        <input type="password" name="password_confirmation" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer text-right">
+                                <button class="btn btn-primary">Save Changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
