@@ -83,35 +83,42 @@
                                             <a class="forget_p" href="{{ route('password.request') }}">forget password ?</a>
                                         </div>
                                         <button class="common_btn" type="submit">login</button>
-                                        <p class="social_text">Sign in with social account</p>
+                                        {{-- <p class="social_text">Sign in with social account</p>
                                         <ul class="wsus__login_link">
                                             <li><a href="#"><i class="fab fa-google"></i></a></li>
                                             <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                                             <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                                             <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                        </ul>
+                                        </ul> --}}
                                     </form>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="pills-profiles" role="tabpanel"
                                 aria-labelledby="pills-profile-tab2">
                                 <div class="wsus__login">
-                                    <form>
+                                    <form method="POST" action="{{ route('register') }}">
+                                        @csrf
+
                                         <div class="wsus__login_input">
                                             <i class="fas fa-user-tie"></i>
-                                            <input type="text" placeholder="Name">
+                                            <input type="text" id="name" name="name" value="{{ old('name') }}"
+                                                placeholder="Name" autocomplete="name">
                                         </div>
                                         <div class="wsus__login_input">
                                             <i class="far fa-envelope"></i>
-                                            <input type="text" placeholder="Email">
+                                            <input type="email" id="email" name="email" value="{{ old('email') }}"
+                                                placeholder="Email" autocomplete="username">
                                         </div>
                                         <div class="wsus__login_input">
                                             <i class="fas fa-key"></i>
-                                            <input type="text" placeholder="Password">
+                                            <input type="password" id="password" name="password" placeholder="Password"
+                                                autocomplete="new-password">
                                         </div>
                                         <div class="wsus__login_input">
                                             <i class="fas fa-key"></i>
-                                            <input type="text" placeholder="Confirm Password">
+                                            <input type="password" id="password_confirmation"
+                                                name="password_confirmation" placeholder="Confirm Password"
+                                                autocomplete="new-password">
                                         </div>
                                         <div class="wsus__login_save">
                                             <div class="form-check form-switch">
